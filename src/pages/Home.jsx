@@ -1,13 +1,27 @@
+import { useState, useEffect } from 'react';
+import { getTrendMovies } from 'services/moviesApi';
+import { MoviesList } from 'components/MoviesList';
+
 export const Home = () => {
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    setLoading(true);
+    getTrendMovies()
+      .then(data => {
+        setMovies(prevMovies => [...data.results]);
+      })
+      .catch(error => {
+        setError(error.message);
+      })
+      .finally(() => setLoading(false));
+  }, []);
+
   return (
     <main>
-      <h1>Welcome</h1>
-      <img src="https://via.placeholder.com/960x240" alt="" />
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto,
-        laboriosam placeat incidunt rem illum animi nemo quibusdam quia
-        voluptatum voluptate.
-      </p>
+      <MoviesList movies={movies} />
     </main>
   );
 };

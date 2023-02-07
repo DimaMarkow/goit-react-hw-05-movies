@@ -1,7 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import { About } from 'pages/About';
 import { Home } from 'pages/Home';
-import { Products } from 'pages/Products';
+import { Movies } from 'pages/Movies';
+import { MovieDetails } from 'pages/MovieDetails';
 import { NotFound } from 'pages/NotFound';
 import { Container, Header, Logo, Link } from 'components/App.styled';
 
@@ -9,24 +10,17 @@ export const App = () => {
   return (
     <Container>
       <Header>
-        <Logo>
-          <span role="img" aria-label="computer icon">
-            💻
-          </span>{' '}
-          GoMerch Store
-        </Logo>
         <nav>
           <Link to="/" end>
             Home
           </Link>
-          <Link to="/about">About</Link>
-          <Link to="/products">Products</Link>
+          <Link to="/movies">Movies</Link>
         </nav>
       </Header>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/products" element={<Products />} />
+        <Route path="/movies" element={<Movies />} />
+        <Route path="/:id" element={<MovieDetails />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Container>
