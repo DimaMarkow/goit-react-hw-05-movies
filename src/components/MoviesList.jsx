@@ -7,7 +7,7 @@ export const MoviesList = ({ movies }) => {
       <ul>
         {movies.map(movie => (
           <li key={movie.id}>
-            <Link to={`${movie.id}`}>{movie.title}</Link>{' '}
+            <Link to={`/movies/${movie.id}`}>{movie.title}</Link>{' '}
           </li>
         ))}
       </ul>
@@ -29,9 +29,3 @@ export const MoviesList = ({ movies }) => {
 //     </Container>
 //   );
 // };
-
-<ul>
-  <li>
-    <Link to="mission">Read about our mission</Link>
-  </li>
-</ul>;

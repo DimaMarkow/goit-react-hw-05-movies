@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom';
-import { About } from 'pages/About';
 import { Home } from 'pages/Home';
 import { Movies } from 'pages/Movies';
 import { MovieDetails } from 'pages/MovieDetails';
@@ -20,8 +19,8 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
-        <Route path="/:id" element={<MovieDetails />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="/movies/:id" element={<MovieDetails />} />
+        {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>
     </Container>
   );
