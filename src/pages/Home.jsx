@@ -4,19 +4,18 @@ import { MoviesList } from 'components/MoviesList';
 
 export const Home = () => {
   const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  // const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
+    // setLoading(true);
     getTrendMovies()
       .then(data => {
         setMovies(prevMovies => [...data.results]);
       })
       .catch(error => {
-        setError(error.message);
-      })
-      .finally(() => setLoading(false));
+        console.log(error.message);
+      });
+    // .finally(() => setLoading(false));
   }, []);
 
   return (

@@ -2,8 +2,8 @@ import { Route, Routes } from 'react-router-dom';
 import { Home } from 'pages/Home';
 import { Movies } from 'pages/Movies';
 import { MovieDetails } from 'pages/MovieDetails';
-import { NotFound } from 'pages/NotFound';
-import { Container, Header, Logo, Link } from 'components/App.styled';
+// import { NotFound } from 'pages/NotFound';
+import { Container, Header, Link } from 'components/App.styled';
 
 export const App = () => {
   return (

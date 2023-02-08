@@ -7,23 +7,22 @@ export const MovieDetails = () => {
   const [movie, setMovie] = useState({});
   const [genres, setGenres] = useState([{ mame: ' ' }]);
 
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  // const [loading, setLoading] = useState(false);
 
   const { id } = useParams();
   let string = ``;
 
   useEffect(() => {
-    setLoading(true);
+    // setLoading(true);
     getMovieById(id)
       .then(data => {
         setMovie(data);
         setGenres(data.genres);
       })
       .catch(error => {
-        setError(error.message);
-      })
-      .finally(() => setLoading(false));
+        console.log(error.message);
+      });
+    // .finally(() => setLoading(false));
   }, [id]);
 
   if (movie.poster_path) {
