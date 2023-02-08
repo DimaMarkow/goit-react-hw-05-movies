@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Outlet, Link } from 'react-router-dom';
+
 import { getMovieById } from 'services/moviesApi';
 import css from 'pages/MovieDetails.module.css';
 
@@ -51,6 +52,13 @@ export const MovieDetails = () => {
           </div>
         </div>
       </div>
+      <p className={css.detailBasic}>Additional information</p>
+      <ul>
+        <li>
+          <Link to="reviews">Reviews</Link>
+        </li>
+      </ul>
+      <Outlet />
     </main>
   );
 };

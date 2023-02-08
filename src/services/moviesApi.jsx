@@ -24,6 +24,11 @@ export const getMovieById = async id => {
   return data;
 };
 
+export const getReviewsById = async id => {
+  const { data } = await instanceByID.get(`/${id}/reviews`, {});
+  return data;
+};
+
 // export const searchImages = async (search, page) => {
 //   const { data } = await instance.get('/', {
 //     params: { query: search, page: page },

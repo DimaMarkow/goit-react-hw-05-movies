@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { Home } from 'pages/Home';
 import { Movies } from 'pages/Movies';
 import { MovieDetails } from 'pages/MovieDetails';
+import { Reviews } from 'components/Reviews';
 // import { NotFound } from 'pages/NotFound';
 import { Container, Header, Link } from 'components/App.styled';
 
@@ -17,9 +18,12 @@ export const App = () => {
         </nav>
       </Header>
       <Routes>
+        <Route path="/goit-react-hw-05-movies" element={<Home />} />
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
-        <Route path="/movies/:id" element={<MovieDetails />} />
+        <Route path="/movies/:id" element={<MovieDetails />}>
+          <Route path="reviews" element={<Reviews />} />
+        </Route>
         {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>
     </Container>
