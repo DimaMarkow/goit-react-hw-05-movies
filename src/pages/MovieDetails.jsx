@@ -45,8 +45,7 @@ export const MovieDetails = () => {
           <div className={css.genresContainer}>
             {genres.map((genre, index) => (
               <p key={index} className={css.detailBasic}>
-                {' '}
-                {genre.name}{' '}
+                {genre.name}
               </p>
             ))}
           </div>
@@ -56,6 +55,9 @@ export const MovieDetails = () => {
       <ul>
         <li>
           <Link to="reviews">Reviews</Link>
+        </li>
+        <li>
+          <Link to="cast">Cast</Link>
         </li>
       </ul>
       <Outlet />

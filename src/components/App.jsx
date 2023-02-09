@@ -3,6 +3,8 @@ import { Home } from 'pages/Home';
 import { Movies } from 'pages/Movies';
 import { MovieDetails } from 'pages/MovieDetails';
 import { Reviews } from 'components/Reviews';
+import { Cast } from 'components/Cast';
+
 // import { NotFound } from 'pages/NotFound';
 import { Container, Header, Link } from 'components/App.styled';
 
@@ -23,6 +25,7 @@ export const App = () => {
         <Route path="/movies" element={<Movies />} />
         <Route path="/movies/:id" element={<MovieDetails />}>
           <Route path="reviews" element={<Reviews />} />
+          <Route path="cast" element={<Cast />} />
         </Route>
         {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>

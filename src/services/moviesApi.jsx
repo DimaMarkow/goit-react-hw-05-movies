@@ -29,6 +29,11 @@ export const getReviewsById = async id => {
   return data;
 };
 
+export const getCastById = async id => {
+  const { data } = await instanceByID.get(`/${id}/credits`, {});
+  return data;
+};
+
 // export const searchImages = async (search, page) => {
 //   const { data } = await instance.get('/', {
 //     params: { query: search, page: page },
