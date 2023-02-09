@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { getReviewsById } from 'services/moviesApi';
-import css from 'components/Reviews.module.css';
+import css from 'components/Reviews/Reviews.module.css';
 
 export const Reviews = () => {
   const [reviews, setReviews] = useState([]);

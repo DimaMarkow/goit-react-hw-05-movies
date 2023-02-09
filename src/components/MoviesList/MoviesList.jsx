@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import { Container } from 'components/MoviesList.styled';
+import css from 'components/MoviesList/MoviesList.module.css';
 
 export const MoviesList = ({ movies }) => {
   return (
-    <Container>
+    <div className={css.container}>
       <ul>
         {movies.map(movie => (
           <li key={movie.id}>
@@ -11,7 +11,7 @@ export const MoviesList = ({ movies }) => {
           </li>
         ))}
       </ul>
-    </Container>
+    </div>
   );
 };
 

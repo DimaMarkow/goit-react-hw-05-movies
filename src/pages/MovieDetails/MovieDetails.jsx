@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, Outlet, Link } from 'react-router-dom';
 
 import { getMovieById } from 'services/moviesApi';
-import css from 'pages/MovieDetails.module.css';
+import css from 'pages/MovieDetails/MovieDetails.module.css';
 
 export const MovieDetails = () => {
   const [movie, setMovie] = useState({});
