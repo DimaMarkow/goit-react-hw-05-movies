@@ -14,14 +14,16 @@ export const Movies = () => {
   const onSubmit = movieName => {
     const normalizedFilter = movieName.toLowerCase();
     setFilter(normalizedFilter);
+    setSearchParams({ query: normalizedFilter });
   };
+
+  console.log(searchParams);
 
   useEffect(() => {
     // setLoading(true);
     if (filter === '') {
       return;
     }
-    setSearchParams({ query: filter });
     getSearchedMovie(filter)
       .then(data => {
         setMovies(prevMovies => [...data.results]);
