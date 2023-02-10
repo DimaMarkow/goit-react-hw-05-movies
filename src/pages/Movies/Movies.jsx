@@ -1,21 +1,41 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import css from 'pages/Movies/Movies.module.css';
 import SearchBox from 'components/SearchBox/SearchBox';
+import { MoviesList } from 'components/MoviesList/MoviesList';
+import { getSearchedMovie } from 'services/moviesApi';
+
+// const [loading, setLoading] = useState(false);
 
 export const Movies = () => {
+  const [filter, setFilter] = useState('');
+  const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const [filter, setFilter] = useState('');
-
-  const onSubmit = data => {
-    const normalizedFilter = data.toLowerCase();
+  const onSubmit = movieName => {
+    const normalizedFilter = movieName.toLowerCase();
     setFilter(normalizedFilter);
   };
+
+  useEffect(() => {
+    // setLoading(true);
+    if (filter === '') {
+      return;
+    }
+    setSearchParams({ query: filter });
+    getSearchedMovie(filter)
+      .then(data => {
+        setMovies(prevMovies => [...data.results]);
+      })
+      .catch(error => {
+        console.log(error.message);
+      });
+    // .finally(() => setLoading(false));
+  }, [filter]);
 
   return (
     <main>
       <SearchBox onSubmit={onSubmit} />
+      {movies.length > 0 && <MoviesList movies={movies} />}
     </main>
   );
 };

@@ -54,10 +54,10 @@ export const MovieDetails = () => {
       <p className={css.detailBasic}>Additional information</p>
       <ul>
         <li>
-          <Link to="reviews">Reviews</Link>
+          <Link to="cast">Cast</Link>
         </li>
         <li>
-          <Link to="cast">Cast</Link>
+          <Link to="reviews">Reviews</Link>
         </li>
       </ul>
       <Outlet />

@@ -6,7 +6,6 @@ import css from 'components/Cast/Cast.module.css';
 
 export const Cast = () => {
   const [actors, setActors] = useState([]);
-
   const { id } = useParams();
 
   useEffect(() => {
@@ -32,10 +31,10 @@ export const Cast = () => {
   return (
     <ul>
       {actors.map(actor => (
-        <li key={actor.id}>
+        <li key={actor.cast_id}>
           <img
             className={css.detailImage}
-            src={`https://image.tmdb.org/t/p/w400${actor.profile_path}`}
+            src={isActors(actor.profile_path)}
             alt=""
           />
           <p className={css.detailBasic}>{actor.name}</p>
@@ -44,3 +43,11 @@ export const Cast = () => {
     </ul>
   );
 };
+
+function isActors(string) {
+  let poster = ' ';
+  if (string) {
+    poster = `https://image.tmdb.org/t/p/w400${string}`;
+  }
+  return poster;
+}

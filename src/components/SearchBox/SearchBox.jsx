@@ -4,16 +4,16 @@ import { toast } from 'react-toastify';
 import css from 'components/SearchBox/SearchBox.module.css';
 
 const SearchBox = ({ onSubmit }) => {
-  const [imageName, setImageName] = useState('');
+  const [movieName, setMovieName] = useState('');
 
   const handleChange = e => {
     const { value } = e.currentTarget;
-    setImageName(value);
+    setMovieName(value);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (imageName.trim() === '') {
+    if (movieName.trim() === '') {
       toast.error('Please, fill the field for filter!', {
         position: 'top-right',
         autoClose: 2000,
@@ -21,7 +21,7 @@ const SearchBox = ({ onSubmit }) => {
       });
       return;
     }
-    onSubmit(imageName);
+    onSubmit(movieName);
   };
 
   return (
@@ -33,7 +33,7 @@ const SearchBox = ({ onSubmit }) => {
           autoComplete="off"
           autoFocus
           placeholder="Search images and photos"
-          value={imageName}
+          value={movieName}
           onChange={handleChange}
         />
         <button type="submit" className={css.searchFormButton}>

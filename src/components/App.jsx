@@ -1,5 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
-import { Home } from 'pages/Home';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import { Home } from 'pages/Home/Home';
 import { Movies } from 'pages/Movies/Movies';
 import { MovieDetails } from 'pages/MovieDetails/MovieDetails';
 import { Reviews } from 'components/Reviews/Reviews';
@@ -29,6 +32,11 @@ export const App = () => {
         </Route>
         {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        style={{ fontSize: 15 }}
+      />
     </Container>
   );
 };

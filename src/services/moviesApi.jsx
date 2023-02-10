@@ -34,6 +34,22 @@ export const getCastById = async id => {
   return data;
 };
 
+const instanceSearch = axios.create({
+  baseURL: 'https://api.themoviedb.org/3/search/movie',
+  params: {
+    api_key: '1798748ad7a054d7f6a9e9dee1e1d177',
+  },
+});
+
+export const getSearchedMovie = async filter => {
+  const { data } = await instanceSearch.get(`/`, {
+    params: { query: filter },
+  });
+  return data;
+};
+
+// https://api.themoviedb.org/3/search/movie
+
 // export const searchImages = async (search, page) => {
 //   const { data } = await instance.get('/', {
 //     params: { query: search, page: page },
