@@ -42,7 +42,7 @@ const instanceSearch = axios.create({
 });
 
 export const getSearchedMovie = async filter => {
-  const { data } = await instanceSearch.get(`/`, {
+  const { data } = await instanceSearch.get(``, {
     params: { query: filter },
   });
   return data;

@@ -7,24 +7,25 @@ import { getSearchedMovie } from 'services/moviesApi';
 // const [loading, setLoading] = useState(false);
 
 export const Movies = () => {
-  const [filter, setFilter] = useState('');
+  // const [filter, setFilter] = useState('');
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const onSubmit = movieName => {
     const normalizedFilter = movieName.toLowerCase();
-    setFilter(normalizedFilter);
     setSearchParams({ query: normalizedFilter });
   };
 
-  console.log(searchParams);
+  const search = searchParams.get('query');
+
+  console.log(search);
 
   useEffect(() => {
     // setLoading(true);
-    if (filter === '') {
+    if (search === '') {
       return;
     }
-    getSearchedMovie(filter)
+    getSearchedMovie(search)
       .then(data => {
         setMovies(prevMovies => [...data.results]);
       })
@@ -32,7 +33,7 @@ export const Movies = () => {
         console.log(error.message);
       });
     // .finally(() => setLoading(false));
-  }, [filter]);
+  }, [search]);
 
   return (
     <main>
