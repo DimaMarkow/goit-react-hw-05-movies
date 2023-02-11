@@ -7,7 +7,6 @@ import { getSearchedMovie } from 'services/moviesApi';
 // const [loading, setLoading] = useState(false);
 
 export const Movies = () => {
-  // const [filter, setFilter] = useState('');
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -17,8 +16,6 @@ export const Movies = () => {
   };
 
   const search = searchParams.get('query');
-
-  console.log(search);
 
   useEffect(() => {
     // setLoading(true);

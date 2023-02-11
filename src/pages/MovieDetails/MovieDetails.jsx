@@ -1,7 +1,9 @@
-import { useState, useEffect } from 'react';
-import { useParams, Outlet, Link } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
+import { useParams, Outlet, Link, useLocation } from 'react-router-dom';
 
 import { getMovieById } from 'services/moviesApi';
+import { BackLink } from 'components/BackLink/BackLink';
+
 import css from 'pages/MovieDetails/MovieDetails.module.css';
 
 export const MovieDetails = () => {
@@ -11,6 +13,9 @@ export const MovieDetails = () => {
   // const [loading, setLoading] = useState(false);
 
   const { id } = useParams();
+  const location = useLocation();
+  const backLinkHref = useRef(location.state?.from ?? '/movies');
+
   let string = ``;
 
   useEffect(() => {
@@ -32,6 +37,7 @@ export const MovieDetails = () => {
 
   return (
     <main>
+      <BackLink to={backLinkHref.current}>Go back</BackLink>
       <div className={css.detailBox}>
         <img className={css.detailImage} src={string} alt="" />
         <div>
