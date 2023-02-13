@@ -1,21 +1,24 @@
 import { Suspense } from 'react';
-import { Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 import Loader from 'components/Loader/Loader';
-import { Container, Header, Link } from 'components/App.styled';
+// import { Container, Header, Link } from 'components/App.styled';
+import css from 'components/SharedLayout/SharedLayout.module.css';
 
 const SharedLayout = () => {
   return (
-    <Container>
-      <Header>
-        <nav>
-          <Link to="/" end>
+    <div className={css.container}>
+      <header>
+        <nav className={css.mainNav}>
+          <NavLink className={css.linkNav} to="/" end>
             Home
-          </Link>
-          <Link to="/movies">Movies</Link>
+          </NavLink>
+          <NavLink className={css.linkNav} to="/movies">
+            Movies
+          </NavLink>
         </nav>
-      </Header>
+      </header>
 
       <Suspense fallback={<Loader />}>
         <Outlet />
@@ -26,7 +29,7 @@ const SharedLayout = () => {
         autoClose={3000}
         style={{ fontSize: 15 }}
       />
-    </Container>
+    </div>
   );
 };
 
