@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { HiArrowLeft } from 'react-icons/hi';
 import { NavLink } from 'react-router-dom';
 import css from 'components/BackLink/BackLink.module.css';
@@ -9,4 +10,8 @@ export const BackLink = ({ to, children }) => {
       {children}
     </NavLink>
   );
+};
+
+BackLink.propTypes = {
+  to: PropTypes.object,
 };
