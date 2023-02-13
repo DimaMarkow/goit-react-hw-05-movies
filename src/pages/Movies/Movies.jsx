@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import Loader from 'components/Loader/Loader';
+
 import SearchBox from 'components/SearchBox/SearchBox';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 import { getSearchedMovie } from 'services/moviesApi';
 
-// const [loading, setLoading] = useState(false);
-
-export const Movies = () => {
+const Movies = () => {
   const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   const [searchParams, setSearchParams] = useSearchParams();
 
   const onSubmit = movieName => {
@@ -18,7 +20,7 @@ export const Movies = () => {
   const search = searchParams.get('query');
 
   useEffect(() => {
-    // setLoading(true);
+    setLoading(true);
     if (search === '') {
       return;
     }
@@ -28,14 +30,17 @@ export const Movies = () => {
       })
       .catch(error => {
         console.log(error.message);
-      });
-    // .finally(() => setLoading(false));
+      })
+      .finally(() => setLoading(false));
   }, [search]);
 
   return (
     <main>
       <SearchBox onSubmit={onSubmit} />
+      {loading && <Loader />}
       {movies.length > 0 && <MoviesList movies={movies} />}
     </main>
   );
 };
+
+export default Movies;

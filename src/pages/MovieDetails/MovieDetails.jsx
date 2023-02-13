@@ -1,16 +1,17 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, Suspense } from 'react';
 import { useParams, Outlet, Link, useLocation } from 'react-router-dom';
+import Loader from 'components/Loader/Loader';
 
 import { getMovieById } from 'services/moviesApi';
 import { BackLink } from 'components/BackLink/BackLink';
 
 import css from 'pages/MovieDetails/MovieDetails.module.css';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const [movie, setMovie] = useState({});
   const [genres, setGenres] = useState([{ mame: ' ' }]);
 
-  // const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const { id } = useParams();
   const location = useLocation();
@@ -19,7 +20,7 @@ export const MovieDetails = () => {
   let string = ``;
 
   useEffect(() => {
-    // setLoading(true);
+    setLoading(true);
     getMovieById(id)
       .then(data => {
         setMovie(data);
@@ -27,8 +28,8 @@ export const MovieDetails = () => {
       })
       .catch(error => {
         console.log(error.message);
-      });
-    // .finally(() => setLoading(false));
+      })
+      .finally(() => setLoading(false));
   }, [id]);
 
   if (movie.poster_path) {
@@ -38,6 +39,7 @@ export const MovieDetails = () => {
   return (
     <main>
       <BackLink to={backLinkHref.current}>Go back</BackLink>
+      {loading && <Loader />}
       <div className={css.detailBox}>
         <img className={css.detailImage} src={string} alt="" />
         <div>
@@ -66,7 +68,11 @@ export const MovieDetails = () => {
           <Link to="reviews">Reviews</Link>
         </li>
       </ul>
-      <Outlet />
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
     </main>
   );
 };
+
+export default MovieDetails;
