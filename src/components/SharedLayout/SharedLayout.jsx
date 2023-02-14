@@ -3,7 +3,6 @@ import { NavLink, Outlet } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 import Loader from 'components/Loader/Loader';
-// import { Container, Header, Link } from 'components/App.styled';
 import css from 'components/SharedLayout/SharedLayout.module.css';
 
 const SharedLayout = () => {

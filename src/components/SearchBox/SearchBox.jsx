@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import css from 'components/SearchBox/SearchBox.module.css';
 
-const SearchBox = ({ onSubmit }) => {
-  const [movieName, setMovieName] = useState('');
+const SearchBox = ({ onSubmit, initMovie }) => {
+  const [movieName, setMovieName] = useState(initMovie || '');
 
   const handleChange = e => {
     const { value } = e.currentTarget;
@@ -48,4 +48,5 @@ export default SearchBox;
 
 SearchBox.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  initMovie: PropTypes.string,
 };

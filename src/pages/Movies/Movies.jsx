@@ -36,7 +36,7 @@ const Movies = () => {
 
   return (
     <main>
-      <SearchBox onSubmit={onSubmit} />
+      <SearchBox onSubmit={onSubmit} initMovie={search} />
       {loading && <Loader />}
       {movies.length > 0 && <MoviesList movies={movies} />}
     </main>
